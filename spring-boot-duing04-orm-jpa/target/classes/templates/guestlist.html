@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>嘉宾列表</title>
+    <link rel="stylesheet" href="/bootstrap.css">
+
+</head>
+    <body class="container">
+        <h2>中餐厅嘉宾列表</h2>
+        <br>
+        <table class="table table-hover">
+            <thead>
+                <th>名字</th>
+                <th>角色</th>
+            </thead>
+            <tbody>
+                <tr th:each="guest:${guestList}">
+                    <td th:text="${guest.name}">名字</td>
+                    <td th:text="${guest.role}">角色</td>
+                    <td class="col-sm-3">
+                        <a th:href="@{/guest/toUpdate(name=${guest.name})}" >修改</a>
+                    </td>
+                    <td class="col-sm-3">
+                        <a th:href="@{/guest/delete(name=${guest.name})}" >删除</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">
+                <a href="/guest/toAdd" th:href="@{/guest/toAdd}" class="btn btn-info">新增</a>
+            </div>
+        </div>
+
+    </body>
+</html>
